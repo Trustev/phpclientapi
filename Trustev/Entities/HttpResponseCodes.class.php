@@ -1,7 +1,9 @@
 <?php
 namespace Trustev\Entities;
 
-
+/*
+* HTTP Response Codes
+*/
 class HttpResponseCodes
 {
 

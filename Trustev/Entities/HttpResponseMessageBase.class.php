@@ -1,49 +1,39 @@
 <?php
 namespace Trustev\Entities {
 
-	/**
-	 * 
-	 */
 	class HttpResponseMessageBase {
 				
 		/**
-		* 
 		* @var VersionBase
 		*/
 		public $Version;
 		
 		/**
-		* 
 		* @var HttpContentBase
 		*/
 		public $Content;
 		
 		/**
-		* 
 		* @var HttpStatusCodeEnum
 		*/
 		public $StatusCode;
 		
 		/**
-		* 
 		* @var string
 		*/
 		public $ReasonPhrase;
 		
 		/**
-		* 
 		* @var Object[]
 		*/
 		public $Headers;
 		
 		/**
-		* 
 		* @var HttpRequestMessageBase
 		*/
 		public $RequestMessage;
 		
 		/**
-		* 
 		* @var boolean
 		*/
 		public $IsSuccessStatusCode;

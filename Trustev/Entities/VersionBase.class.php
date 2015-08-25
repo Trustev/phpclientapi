@@ -1,9 +1,7 @@
 <?php
 namespace Trustev\Entities {
 
-	/**
-	 * 
-	 */
+
 	class VersionBase {
 				
 		/**

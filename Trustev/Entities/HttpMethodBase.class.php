@@ -1,13 +1,9 @@
 <?php
 namespace Trustev\Entities {
 
-	/**
-	 * 
-	 */
 	class HttpMethodBase {
 				
 		/**
-		* 
 		* @var string
 		*/
 		public $Method;

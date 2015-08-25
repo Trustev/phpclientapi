@@ -2,7 +2,7 @@
 namespace Trustev\Entities {
 
 	/**
-	 * 
+	 * The Email object
 	 */
 	class EmailBase {
 				
@@ -15,13 +15,13 @@ namespace Trustev\Entities {
 		public $Id;
 		
 		/**
-		* Email Address of the customer
+		* Email Address of the Customer
 		* @var string
 		*/
 		public $EmailAddress;
 		
 		/**
-		* Is this is the default email for the customer?
+		* Is this is the default Email for the Customer?
 		* @var boolean
 		*/
 		public $IsDefault;

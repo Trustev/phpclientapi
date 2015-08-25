@@ -1,13 +1,9 @@
 <?php
 namespace Trustev\Entities {
 
-	/**
-	 * 
-	 */
 	class HttpContentBase {
 				
 		/**
-		* 
 		* @var Object[]
 		*/
 		public $Headers;

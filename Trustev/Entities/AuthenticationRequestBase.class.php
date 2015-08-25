@@ -7,7 +7,7 @@ namespace Trustev\Entities {
 	class AuthenticationRequestBase {
 				
 		/**
-		* This is your Site UserName, available from your API Keys accessed through the Trustev Dashboard
+		* This is your Site UserName, available from your API Keys which our Integration Team supply to you
 		* @var string
 		*/
 		public $UserName;
@@ -21,14 +21,14 @@ namespace Trustev\Entities {
 		
 		/**
 		* This is a hashed value involving your Timestamp, Site Password, and Shared Secret.
-        * Please see Step 5 of our Integration Documentation for information on how to form this.
+        * Please see Step 4 of our Integration Documentation for information on how to form this.
 		* @var string
 		*/
 		public $PasswordHash;
 		
 		/**
 		* This is a hashed value involving your Timestamp, Site UserName, and Shared Secret.
-        * Please see Step 5 of our Integration Documentation for information on how to form this.
+        * Please see Step 4 of our Integration Documentation for information on how to form this.
 		* @var string
 		*/
 		public $UserNameHash;

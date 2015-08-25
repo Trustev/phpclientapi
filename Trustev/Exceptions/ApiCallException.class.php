@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: stepan.fryd@gmail.com
- * Date: 18. 5. 2015
- * Time: 16:01
- */
-
 namespace Trustev\Exceptions {
 
 

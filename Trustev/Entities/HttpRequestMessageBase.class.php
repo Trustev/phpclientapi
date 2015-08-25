@@ -7,37 +7,32 @@ namespace Trustev\Entities {
 	class HttpRequestMessageBase {
 				
 		/**
-		* 
 		* @var VersionBase
 		*/
 		public $Version;
 		
 		/**
-		* 
 		* @var HttpContentBase
 		*/
 		public $Content;
 		
 		/**
-		* 
 		* @var HttpMethodBase
 		*/
 		public $Method;
 		
 		/**
-		* 
+		* The request Uri
 		* @var URI
 		*/
 		public $RequestUri;
 		
 		/**
-		* 
 		* @var Object[]
 		*/
 		public $Headers;
 		
 		/**
-		* 
 		* @var Dictionary of string [key]
 		* 	and Object [value]
 		*/

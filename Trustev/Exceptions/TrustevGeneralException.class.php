@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: stepan.fryd@gmail.com
- * Date: 15. 5. 2015
- * Time: 14:40
- */
-
 namespace Trustev\Exceptions;
 
-
+/*
+* This is a general TrustevClient Exception, inspect the message for more details.
+*/
 class TrustevGeneralException extends \Exception {
 
     /**

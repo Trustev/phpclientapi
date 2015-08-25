@@ -2,12 +2,12 @@
 namespace Trustev\Entities {
 
 	/**
-	 * 
+	 * The CaseStatusBase class is used to let Trustev know the current status of any Case. When the status of a Case changes, please update the status of the Case.
 	 */
 	class CaseStatusBase {
 				
 		/**
-		* This is the Status Id. This Id is returned in the response header of the Add a Case method, when Status Information has been added. 
+		* This is the Status Id. This Id is returned in the response message, when Status Information has been added. 
         * This Id is required should you wish to retrieve the Status details after a Trustev Case has been added.
         * Please note: this Id is always returned from the Trustev API as a reference Id to the specific object.
 		* @var string
@@ -28,7 +28,6 @@ namespace Trustev\Entities {
 		
 		/**
 		* Current Timestamp. Accepted format: yyyy-MM-ddTHH:mm:ss.fffZ 
-        * See our FAQ section for more information.
 		* @var \DateTime
 		*/
 		public $Timestamp;

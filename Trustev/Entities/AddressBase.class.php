@@ -63,7 +63,7 @@ namespace Trustev\Entities {
 		public $PostalCode;
 		
 		/**
-		* The Address Type â€“ Standard (0), Billing (1), or Delivery (2)
+		* The Address Type - Standard (0), Billing (1), or Delivery (2)
 		* @var AddressTypeEnum
 		*/
 		public $Type;

@@ -2,7 +2,7 @@
 namespace Trustev\Entities {
 
 	/**
-	 * 
+	 * The Customer's Social Account details such as Social Ids, Access Tokens and Secret
 	 */
 	class SocialAccountBase {
 				
@@ -27,38 +27,37 @@ namespace Trustev\Entities {
 		public $Type;
 		
 		/**
-		* This is the Short Term Access Token which is available from the Social Access Token you received from the relevant Social Network&#39;s API
+		* This is the Short Term Access Token which is available from the Social Access Token you received from the relevant Social Network's API
 		* @var string
 		*/
 		public $ShortTermAccessToken;
 		
 		/**
-		* This is the Long Term Access Token which is available from the Social Access Token you received from the relevant Social Network&#39;s API
+		* This is the Long Term Access Token which is available from the Social Access Token you received from the relevant Social Network's API
 		* @var string
 		*/
 		public $LongTermAccessToken;
 		
 		/**
-		* This is the Short Term Token Expiry datetime which is available from the Social Access Token you received from the relevant Social Network&#39;s API
+		* This is the Short Term Token Expiry datetime which is available from the Social Access Token you received from the relevant Social Network's API
 		* @var \DateTime
 		*/
 		public $ShortTermAccessTokenExpiry;
 		
 		/**
-		* This is the Long Term Token Expiry datetime which is available from the Social Access Token you received from the relevant Social Network&#39;s API
+		* This is the Long Term Token Expiry datetime which is available from the Social Access Token you received from the relevant Social Network's API
 		* @var \DateTime
 		*/
 		public $LongTermAccessTokenExpiry;
 		
 		/**
-		* This is the Secret which is attached to the Social Network&#39;s Developer&#39;s Account. This would have previously been needed to access the relevant Social Network&#39;s API
+		* This is the Secret which is attached to the Social Networks Developer's Account. This would have previously been needed to access the relevant Social Network's API
 		* @var string
 		*/
 		public $Secret;
 		
 		/**
 		* Current Timestamp. Accepted format: yyyy-MM-ddTHH:mm:ss.fffZ 
-        * See our FAQ section for more information.
 		* @var \DateTime
 		*/
 		public $Timestamp;

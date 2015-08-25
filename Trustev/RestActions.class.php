@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: stepan.fryd@gmail.com
- * Date: 19. 5. 2015
- * Time: 13:07
- */
-
 namespace Trustev {
 
-
+	/*
+	* The RestAction class sets the relevant URI, and HTTP method type.
+	*/
 	class RestActions
 	{
 		private $_actions;
@@ -73,7 +68,7 @@ namespace Trustev {
 		}
 
 		/**
-		 * @param $action string Action name
+		 * @param string $action Action name
 		 * @return Entities\RestAction
 		 * @throws TrustevGeneralException
 		 */

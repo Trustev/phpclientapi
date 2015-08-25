@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: stepan.fryd@gmail.com
- * Date: 19. 5. 2015
- * Time: 13:40
- */
 
 namespace Trustev\Entities {
 
@@ -22,8 +16,8 @@ namespace Trustev\Entities {
 		public $Method;
 
 		/**
-		 * @param $url string REST URL mask
-		 * @param $method string HTTP action method
+		 * @param string $url REST URL mask
+		 * @param string $method HTTP action method
 		 */
 		public function __construct($url, $method) {
 			$this->Url = $url;

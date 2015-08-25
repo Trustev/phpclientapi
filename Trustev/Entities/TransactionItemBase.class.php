@@ -2,7 +2,7 @@
 namespace Trustev\Entities {
 
 	/**
-	 * 
+	 * Items Object – contains details on Item Name, Quantity and Item Value. Please see Items Object for further parameter information.
 	 */
 	class TransactionItemBase {
 				

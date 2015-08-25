@@ -2,7 +2,7 @@
 namespace Trustev\Entities {
 
 	/**
-	 * 
+	 * Transaction Object - includes details such as Transaction Amount, Currency, Items and Transaction delivery/billing address.
 	 */
 	class TransactionBase {
 				
@@ -28,20 +28,19 @@ namespace Trustev\Entities {
 		
 		/**
 		* Current Timestamp. Accepted format: yyyy-MM-ddTHH:mm:ss.fffZ
-        * See our FAQ section for more information.
 		* @var \DateTime
 		*/
 		public $Timestamp;
 		
 		/**
-		* Addresses Object â€“ Contains standard/delivery/billing information. 
+		* Addresses Object - Contains standard/delivery/billing information. 
         * Please see Address Object for further parameter information.
 		* @var AddressBase[]
 		*/
 		public $Addresses;
 		
 		/**
-		* Items Object â€“ contains details on Item Name, Quantity and Item Value. 
+		* Items Object - contains details on Item Name, Quantity and Item Value. 
         * Please see Items Object for further parameter information.
 		* @var TransactionItemBase[]
 		*/

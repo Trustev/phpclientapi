@@ -2,7 +2,7 @@
 namespace Trustev\Entities {
 
 	/**
-	 * 
+	 * The Customer object includes the information on a Customer such as Address, Names, Email, Phone Number and Social Account information.
 	 */
 	class CustomerBase {
 				
@@ -41,21 +41,19 @@ namespace Trustev\Entities {
 		
 		/**
 		* The Date of Birth of the Customer. Accepted format: yyyy-MM-ddTHH:mm:ss.fffZ
-        * See our Timestamp FAQ section for more information.
 		* @var \DateTime
 		*/
 		public $DateOfBirth;
 		
 		/**
-		* Addresses Object â€“ Contains standard/delivery/billing information. 
+		* Addresses Object – Contains standard/delivery/billing information. 
         * Please see Address Object for further parameter information.
 		* @var AddressBase[]
 		*/
 		public $Addresses;
 		
 		/**
-		* Social Account Object â€“ Contains Short Term and Long Term Access Tokens, along with Social Account Ids and Types. 
-        * See Trustev Integration Documentation, http://developers.trustev.com/v2 for more information.
+		* Social Account Object - Contains Short Term and Long Term Access Tokens, along with Social Account Ids and Types. 
 		* @var SocialAccountBase[]
 		*/
 		public $SocialAccounts;

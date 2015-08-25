@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: stepan.fryd@gmail.com
- * Date: 15. 5. 2015
- * Time: 12:42
- */
 
 namespace Trustev\Entities {
 
@@ -13,22 +7,25 @@ namespace Trustev\Entities {
     {
 
         /**
+         * Indicates when the API Token will expire
          * @var string
          */
         public $ExpireAt;
 
         /**
+         * The API Token required in the request header
          * @var string
          */
         public $APIToken;
 
         /**
+         * The Credential Type of the API Token - Live/Token
          * @var number
          */
         public $CredentialType;
 
         /**
-         * @param $token Object
+         * @param Object $token 
          */
         public function __construct($token)
         {
