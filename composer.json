@@ -1,0 +1,9 @@
+{
+	"name": "trustev/phpclientapi",
+	"description": "PHP Wrapper for the Trustev API",
+	"keywords": ["trustev"],
+	"homepage": "https://github.com/Trustev/phpclientapi",
+	"require":{
+		"php": ">=5.3.0"
+	}
+}

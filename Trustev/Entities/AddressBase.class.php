@@ -2,7 +2,7 @@
 namespace Trustev\Entities {
 
 	/**
-	 * 
+	 * Represents an Address for either a Customer or Transaction
 	 */
 	class AddressBase {
 				
