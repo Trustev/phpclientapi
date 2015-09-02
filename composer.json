@@ -5,5 +5,10 @@
 	"homepage": "https://github.com/Trustev/phpclientapi",
 	"require":{
 		"php": ">=5.3.0"
+	},
+	"autoload":{
+		"psr-4": {
+			"Trustev\\":"src/"
+		}
 	}
 }
