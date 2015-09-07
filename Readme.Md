@@ -10,6 +10,30 @@
 - PHP 5.3+
 
 ##Installation
+####Composer
+You can install this via [Composer](http://getcomposer.org/). Add this to your `composer.json`:
+
+````json
+{
+"require" : {
+	"trustev/phpclientapi" : "dev-master"
+	}
+}
+
+````
+
+Then install via:
+
+```bash
+composer install
+```
+
+To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/00-intro.md#autoloading):
+
+```php
+require_once('vendor/autoload.php');
+```
+
 ####Download and Unpackage
 - Simply download and untar using curl with the command 
 
