@@ -638,7 +638,7 @@ namespace Trustev {
 		 * @return Object
 		 * @throws \Exception
 		 */
-		private function CallApi($url, $method, $data = null)
+		private static function CallApi($url, $method, $data = null)
 		{
 			$fullUrl = self::$baseUrl . $url;
 
