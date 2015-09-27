@@ -50,10 +50,16 @@ namespace Trustev\Entities {
          */
         public function IsExpired(){
             $now = new \DateTime();
+            $diffTime = ($now->diff(new \DateTime($this->ExpireAt)));
+            $diffValue = floatval($diffTime->format("%i") . "." . $diffTime->format("%s"));
 
-            if( $now > $this->ExpireAt){
+            if (is_null($this->ExpireAt)) {
+                return false;    
+            }
+            if($diffValue > 30.0){
                 return true;
             }
+            
             return false;
         }
     }
