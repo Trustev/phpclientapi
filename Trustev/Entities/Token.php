@@ -56,7 +56,7 @@ namespace Trustev\Entities {
             if (is_null($this->ExpireAt)) {
                 return false;    
             }
-            if($diffValue > 30.0){
+            if($diffValue > 25.0){
                 return true;
             }
             
