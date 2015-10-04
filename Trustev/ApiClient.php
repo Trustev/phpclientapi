@@ -54,7 +54,7 @@ namespace Trustev {
 			self::$userName = $userName;
 			self::$password = $password;
 			self::$secret = $secret;
-			self::Authenticate();
+
 			return ;
 		}
 
@@ -706,7 +706,10 @@ namespace Trustev {
 		{
 			$action = RestActions::GetInstance()->GetRestAction($function);
 
-			if (self::$token->IsExpired()){
+			if (is_null(self::$token)) {
+				self::Authenticate();
+			}
+			elseif (self::$token->IsExpired()){
 				self::Authenticate();
 			}
 
