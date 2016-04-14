@@ -49,9 +49,16 @@ namespace Trustev\Entities {
          * @return bool
          */
         public function IsExpired(){
-            $now = new \DateTime();
-
-            if( $now > $this->ExpireAt){
+            $now = new \DateTime(null, new \DateTimeZone('UTC'));
+            $diffTime = ($now->diff(new \DateTime($this->ExpireAt)));
+          
+            $negative = "";
+            if ($diffTime->invert == 1){
+                $negative = "-";
+            }
+            $diffValue = floatval($negative . $diffTime->format("%h%I.%s"));
+            
+            if($diffValue <= 3 || $diffValue > 30.1){
                 return true;
             }
             return false;
