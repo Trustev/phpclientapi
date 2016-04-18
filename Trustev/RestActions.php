@@ -63,7 +63,8 @@ namespace Trustev {
 				"GetCaseSummaryHistory" => new Entities\RestAction("/history/casesummary?CaseNumber=%s&StartDate=%s&EndDate=%s&SortBy=%s&PageNumber=%s", Entities\HttpMethodType::$Get),
 				"GetCaseDecisionHistory" => new Entities\RestAction("/history/decisionreview/%s", Entities\HttpMethodType::$Get),
 				"GetCaseHistoryFilter" => new Entities\RestAction("/History?CaseNumber=%s&StartDate=%s&EndDate=%s&SortBy=%s&PageNumber=%s", Entities\HttpMethodType::$Get),
-				"GetCaseHistory" => new Entities\RestAction("/History?caseNumber=%s", Entities\HttpMethodType::$Get)
+				"GetCaseHistory" => new Entities\RestAction("/History?caseNumber=%s", Entities\HttpMethodType::$Get),
+				"GetDetailedDecision" => new Entities\RestAction("/detaileddecision/%s", Entities\HttpMethodType::$Get)
 			);
 		}
 
