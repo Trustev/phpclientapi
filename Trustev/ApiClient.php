@@ -536,6 +536,22 @@ namespace Trustev {
 			self::initialize();
 			return self::GetAction(__FUNCTION__, array($caseId));
 		}
+		
+		/**
+		 * Get a Detailed Decision on a Case with Id caseId.
+		 * @param string $caseId The Id of a Case which you have already posted to the TrustevClient API. 
+		 * @return Entities\DecisionBase
+		 * @throws TrustevGeneralException
+		 */
+		public static function GetDetailedDecision($caseId)
+		{
+			self::initialize();
+
+			if($caseId instanceof Entities\CaseBase){
+				$caseId = $caseId->Id;
+			}
+			return self::GetAction(__FUNCTION__, array($caseId));
+		}
 
 		
 		private static function initialize($type = null)
