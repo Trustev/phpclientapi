@@ -77,7 +77,7 @@ namespace Trustev {
 		 * @return Entities\CaseBase
 		 * @throws TrustevGeneralException
 		 */
-		public static function UpdateCase($case, $caseId)
+		public static function UpdateCase($caseId, $case)
 		{
 			self::initialize();
 			return self::GetAction(__FUNCTION__, array($caseId), $case);
@@ -380,59 +380,7 @@ namespace Trustev {
 			self::initialize();
 			return self::GetAction(__FUNCTION__, array($caseId));
 		}
-
-		/**
-		 * Post your SocialAccount to an existing Customer on an existing Case
-		 * @param string $caseId The Case Id of a Case which you have already posted
-		 * @param Entities\SocialAccountBase $socialAccount Your SocialAccount which you want to post
-		 * @return Entities\SocialAccountBase
-		 * @throws TrustevGeneralException
-		 */
-		public static function PostSocialAccount($caseId, $socialAccount)
-		{
-			self::initialize();
-			return self::GetAction(__FUNCTION__, array($caseId), $socialAccount);
-		}
-
-		/**
-		* Update a specific SocialAccount on a Case which already contains a SocialAccount
-		* @param string $caseId The Case Id of a Case which you have already posted
-		* @param Entities\SocialAccountBase $socialAccount The SocialAccount you want to update the existing SocialAccount to
-		* @param string $socialAccountId The id of the SocialAccount you want to update
-		* @return Entities\SocialAccountBase
-		* @throws TrustevGeneralException
-		*/
-		public static function UpdateSocialAccount($caseId, $socialAccount, $socialAccountId)
-		{
-			self::initialize();
-			return self::GetAction(__FUNCTION__, array($caseId, $socialAccountId), $socialAccount);
-		}
-
-		/**
-		 * Get a specific SocialAccount from a Case
-		 * @param string $caseId The Case Id of a Case with the Customer Social Account which you have already posted
-		 * @param string $socialAccountId The Id of the SocialAccount you want to get
-		 * @return Entities\SocialAccountBase
-		 * @throws TrustevGeneralException
-		 */
-		public static function GetSocialAccount($caseId, $socialAccountId)
-		{
-			self::initialize();
-			return self::GetAction(__FUNCTION__, array($caseId, $socialAccountId));
-		}
-
-		/**
-		 * Get all the SocialAccounts from a Customer on a Case
-		 * @param string $caseId The Case Id of a Case with the Customer which you have already posted
-		 * @return null|Entities\SocialAccountBase[]
-		 * @throws TrustevGeneralException
-		 */
-		public static function GetSocialAccounts($caseId)
-		{
-			self::initialize();
-			return self::GetAction(__FUNCTION__, array($caseId));
-		}
-
+		
 		/**
 		 * Post your TransactionAddress to an existing Transaction on an existing Case
 		 * @param string $caseId The Case Id of a Case with the Transaction which you have already posted

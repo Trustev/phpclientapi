@@ -4,21 +4,21 @@ namespace Trustev\Entities {
 /**
   * 
  */
-class CaseSummarySortOptionsEnum {
+interface CaseSummarySortOptionsEnum {
     /**
      * 
      */
-    public static $DateAsc = 0;
+    const DateAsc = 0;
 
     /**
      * 
      */
-    public static $DateDesc = 1;
+    const DateDesc = 1;
 
     /**
      * 
      */
-    public static $Status = 2;
+    const Status = 2;
 
 }
 }
