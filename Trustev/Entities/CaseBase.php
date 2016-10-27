@@ -62,6 +62,12 @@ namespace Trustev\Entities {
 		public $Timestamp;
 
 		/**
+		* Current Timestamp. Accepted format: yyyy-MM-ddTHH:mm:ss.fffZ 
+		* @var \DateTime
+		*/
+		public $CaseType;
+
+		/**
 		* @param $object null|array
 		*/
 		public function __construct($object = null) {
@@ -75,6 +81,7 @@ namespace Trustev\Entities {
 				if(array_key_exists("Statuses", $object)) $this->Statuses = $object["Statuses"];
 				if(array_key_exists("Payments", $object)) $this->Payments = $object["Payments"];
 				if(array_key_exists("Timestamp", $object)) $this->Timestamp = $object["Timestamp"];
+				if(array_key_exists("CaseType", $object)) $this->CaseType = $object["CaseType"];
 
 			}
 		}

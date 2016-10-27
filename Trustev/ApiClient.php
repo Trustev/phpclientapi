@@ -44,13 +44,13 @@ namespace Trustev {
 		 * @param string $secret Your ApiClient Secret
 		 * @throws TrustevGeneralException
 		 */
-		public static function SetUp($userName, $password, $secret)
+		public static function SetUp($userName = Settings::Username, $password = Settings::Password, $secret = Settings::Secret, $baseUrl = Settings::URL_US)
 		{
 			if(empty($userName) || empty($password) || empty($secret)){
 				throw new TrustevGeneralException("You have not set your ApiClient credentials correctly. You need to set these by calling the SetUp method on the ApiClient Class providing your UserName, Password and Secret as the paramters before you can communicate with the Trustev API");
 			}
 			self::initialize("setup");
-			self::$baseUrl = "https://app.trustev.com/api/v2.0";
+			self::$baseUrl = $baseUrl;
 			self::$userName = $userName;
 			self::$password = $password;
 			self::$secret = $secret;
