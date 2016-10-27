@@ -2,31 +2,31 @@
 namespace Trustev\Entities {
 
 
-class SocialNetworkTypeEnum {
+interface SocialNetworkTypeEnum {
     /**
      * Facebook Social Network
      */
-    public static $Facebook = 0;
+    const Facebook = 0;
 
     /**
      * Twitter Social Network
      */
-    public static $Twitter = 1;
+    const Twitter = 1;
 
     /**
      * LinkedIn Social Network
      */
-    public static $LinkedIn = 2;
+    const LinkedIn = 2;
 
     /**
      * Trustev Social Network
      */
-    public static $Trustev = 3;
+    const Trustev = 3;
 
     /**
      * TrustevSession Social Network
      */
-    public static $TrustevSession = 4;
+    const TrustevSession = 4;
 
 }
 }

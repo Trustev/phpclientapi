@@ -38,10 +38,6 @@ namespace Trustev {
 				"UpdateTransactionItem" => new Entities\RestAction("/case/%s/transaction/item/%s", Entities\HttpMethodType::$Put),
 				"GetTransactionItem" => new Entities\RestAction("/case/%s/transaction/item/%s", Entities\HttpMethodType::$Get),
 				"GetTransactionItems" => new Entities\RestAction("/case/%s/transaction/item", Entities\HttpMethodType::$Get),
-				"PostSocialAccount" => new Entities\RestAction("/case/%s/customer/socialaccount", Entities\HttpMethodType::$Post),
-				"UpdateSocialAccount" => new Entities\RestAction("/case/%s/customer/socialaccount/%s", Entities\HttpMethodType::$Put),
-				"GetSocialAccount" => new Entities\RestAction("/case/%s/customer/socialaccount/%s", Entities\HttpMethodType::$Get),
-				"GetSocialAccounts" => new Entities\RestAction("/case/%s/customer/socialaccount", Entities\HttpMethodType::$Get),
 				"PostCustomerAddress" => new Entities\RestAction("/case/%s/customer/address", Entities\HttpMethodType::$Post),
 				"UpdateCustomerAddress" => new Entities\RestAction("/case/%s/customer/address/%s", Entities\HttpMethodType::$Put),
 				"GetCustomerAddress" => new Entities\RestAction("/case/%s/customer/address/%s", Entities\HttpMethodType::$Get),
@@ -60,10 +56,6 @@ namespace Trustev {
 				"PostCaseStatus" => new Entities\RestAction("/case/%s/status", Entities\HttpMethodType::$Post),
 				"GetCaseStatus" => new Entities\RestAction("/case/%s/status/%s", Entities\HttpMethodType::$Get),
 				"GetCaseStatuses" => new Entities\RestAction("/case/%s/status", Entities\HttpMethodType::$Get),
-				"GetCaseSummaryHistory" => new Entities\RestAction("/history/casesummary?CaseNumber=%s&StartDate=%s&EndDate=%s&SortBy=%s&PageNumber=%s", Entities\HttpMethodType::$Get),
-				"GetCaseDecisionHistory" => new Entities\RestAction("/history/decisionreview/%s", Entities\HttpMethodType::$Get),
-				"GetCaseHistoryFilter" => new Entities\RestAction("/History?CaseNumber=%s&StartDate=%s&EndDate=%s&SortBy=%s&PageNumber=%s", Entities\HttpMethodType::$Get),
-				"GetCaseHistory" => new Entities\RestAction("/History?caseNumber=%s", Entities\HttpMethodType::$Get),
 				"GetDetailedDecision" => new Entities\RestAction("/detaileddecision/%s", Entities\HttpMethodType::$Get)
 			);
 		}

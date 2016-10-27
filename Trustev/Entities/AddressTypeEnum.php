@@ -2,21 +2,21 @@
 namespace Trustev\Entities {
 
 
-class AddressTypeEnum {
+interface AddressTypeEnum {
     /**
      * Standard Address Type
      */
-    public static $Standard = 0;
+    const Standard = 0;
 
     /**
      * Billing Address Type
      */
-    public static $Billing = 1;
+    const Billing = 1;
 
     /**
      * Delivery Address Type
      */
-    public static $Delivery = 2;
+    const Delivery = 2;
 
 }
 }
