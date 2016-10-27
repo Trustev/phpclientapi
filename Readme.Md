@@ -16,7 +16,7 @@ You can install this via [Composer](http://getcomposer.org/). Add this to your `
 ````json
 {
 "require" : {
-	"trustev/phpclientapi" : "v0.2"
+	"trustev/phpclientapi" : "dev-master"
 	}
 }
 
