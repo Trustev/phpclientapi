@@ -4,9 +4,10 @@ use PHPUnit\Framework\TestCase;
 
 class TrustevClientTest extends TestCase
 {
-    public $userName = "test-FancyTees";
-    public $password = "e8a9e408358249a38c62f1e45f90f7d0";
-    public $secret = "3b2339e75649442297d5176321a52672";
+    public $userName = Settings::Username;
+    public $password = Settings::Password; 
+    public $secret = Settings::Secret;
+    public $baseUrl = Settings::URL_EU;
 
     private function RandomGUID()
 	{
