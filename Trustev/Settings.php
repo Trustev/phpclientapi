@@ -11,16 +11,19 @@ interface Settings
 	 * API Username ---- REQUIRED ----
 	 * @var string
 	 */
+	const Username = "";
 
 	/**
 	 * API Password ---- REQUIRED ----
 	 * @var string
 	 */
+	const Password = "";
 
 	/**
 	 * API Secret ---- REQUIRED ----
 	 * @var string
 	 */
+	const Secret = "";
 
 	/**
 	 * API Address for the United States
