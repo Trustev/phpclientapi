@@ -52,7 +52,8 @@ This is a simple version of the Trustev Integration and it involves 4 simple ste
 ```PHP
 
 // 1. Set-Up the Trustev Api Client with your user credentials
-ApiClient::SetUp($userName, $password, $secret);
+// If none is specified it defaults to the constants in Settings.php (have a look if you are unsure)
+ApiClient::SetUp($userName, $password, $secret, $baseUrl);
 
 
 // 2. Create your case and POST this Case to the Trustev API.
@@ -101,7 +102,8 @@ We also provide detailed API endpoints for updating specific parts of your Case.
 ```PHP
 
 // 1. Set-Up the Trustev Api Client with your user credentials
-ApiClient::SetUp($userName, $password, $secret);
+// If none is specified it defaults to the constants in Settings.php (have a look if you are unsure)
+ApiClient::SetUp($userName, $password, $secret, $baseUrl);
 
 
 // 2. Create your case.
@@ -149,7 +151,8 @@ $statusReturn = ApiClient::PostCaseStatus($caseReturn->Id, $status);
 ```PHP
 
 // 1. Set-Up the Trustev Api Client with your user credentials
-ApiClient::SetUp($userName, $password, $secret);
+// If none is specified it defaults to the constants in Settings.php (have a look if you are unsure)
+ApiClient::SetUp($userName, $password, $secret, $baseUrl);
 
 
 // 2. Create your case.
