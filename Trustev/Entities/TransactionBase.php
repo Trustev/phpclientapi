@@ -47,6 +47,13 @@ namespace Trustev\Entities {
 		public $Items;
 
 		/**
+		* Emails Object - contains details on Email. 
+        * Please see Items Object for further parameter information.
+		* @var EmailBase[]
+		*/
+		public $Emails;
+
+		/**
 		* @param $object null|array
 		*/
 		public function __construct($object = null) {
@@ -57,6 +64,7 @@ namespace Trustev\Entities {
 				if(array_key_exists("Timestamp", $object)) $this->Timestamp = $object["Timestamp"];
 				if(array_key_exists("Addresses", $object)) $this->Addresses = $object["Addresses"];
 				if(array_key_exists("Items", $object)) $this->Items = $object["Items"];
+				if(array_key_exists("Emails", $object)) $this->Emails = $object["Emails"];
 
 						}
 		}

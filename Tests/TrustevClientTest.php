@@ -10,14 +10,14 @@ class TrustevClientTest extends TestCase
     public $baseUrl = Settings::URL_EU;
 
     private function RandomGUID()
-	{
-	    if (function_exists('com_create_guid') === true)
-	    {
-	        return trim(com_create_guid(), '{}');
-	    }
+    {
+        if (function_exists('com_create_guid') === true)
+        {
+            return trim(com_create_guid(), '{}');
+        }
 
-    	return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
-	}
+        return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+    }
 
 
 #REGION CASE TESTS 
@@ -48,7 +48,7 @@ class TrustevClientTest extends TestCase
 
     public function testGETCase()
     {
-    	
+        
         ApiClient::SetUp($this->userName, $this->password, $this->secret);
         
         $kase = new Entities\CaseBase(array(
@@ -101,7 +101,7 @@ class TrustevClientTest extends TestCase
         $this->assertEquals($returnCase->Customer->LastName, $getCase->Customer->LastName);
     }
 
-	/**
+    /**
      * @expectedException Trustev\Exceptions\TrustevGeneralException
      * @expectedExceptionMessage Exception while executing GetCase
      */
@@ -110,7 +110,7 @@ class TrustevClientTest extends TestCase
         
         ApiClient::SetUp($this->userName, $this->password, $this->secret);
 
-        $getCase = ApiClient::GetCase($this->RandomGUID());	
+        $getCase = ApiClient::GetCase($this->RandomGUID()); 
     }
 
 #ENDREGION
@@ -184,7 +184,7 @@ class TrustevClientTest extends TestCase
 #REGION DECISION TESTS
     public function testGETDecision()
     {
-    	
+        
         ApiClient::SetUp($this->userName, $this->password, $this->secret);
 
         $kase = new Entities\CaseBase(array(
@@ -207,7 +207,7 @@ class TrustevClientTest extends TestCase
 
     public function testDecisionPASS()
     {
-    	
+        
         ApiClient::SetUp($this->userName, $this->password, $this->secret);
 
         $kase = new Entities\CaseBase(array(
@@ -234,7 +234,7 @@ class TrustevClientTest extends TestCase
 
     public function testDecisionFLAG()
     {
-    	
+        
         ApiClient::SetUp($this->userName, $this->password, $this->secret);
 
         $kase = new Entities\CaseBase(array(
@@ -260,7 +260,7 @@ class TrustevClientTest extends TestCase
 
     public function testDecisionFAIL()
     {
-    	
+        
         ApiClient::SetUp($this->userName, $this->password, $this->secret);
 
         $kase = new Entities\CaseBase(array(
@@ -330,7 +330,7 @@ class TrustevClientTest extends TestCase
 #REGION CUSTOMER TESTS
     public function testPOSTCustomer()
     {
-    	
+        
         ApiClient::SetUp($this->userName, $this->password, $this->secret);
 
         $kase = new Entities\CaseBase(array(
@@ -409,6 +409,27 @@ class TrustevClientTest extends TestCase
         $this->assertEquals($returnCaseCustomer->FirstName, $kase->Customer->FirstName);
         $this->assertEquals($returnCaseCustomer->LastName, $kase->Customer->LastName);
     }
+
+
+    /**
+     * @expectedException Trustev\Exceptions\TrustevGeneralException
+     * @expectedExceptionMessage Exception while executing GetCustomer
+     */
+    public function testNULLGETCustomer()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        
+        $returnCaseCustomer = ApiClient::GetCustomer($returnCase->Id);
+    }
 #ENDREGION
 
 #REGION Case Status TESTS
@@ -484,6 +505,24 @@ class TrustevClientTest extends TestCase
 
     /**
      * @expectedException Trustev\Exceptions\TrustevGeneralException
+     * @expectedExceptionMessage Exception while executing GetCaseStatus
+     */
+    public function testGETInvalidCaseStatus()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        $caseStatusReturn = ApiClient::GetCaseStatus($kase->Id, $this->RandomGUID());        
+    }
+
+    /**
+     * @expectedException Trustev\Exceptions\TrustevGeneralException
      * @expectedExceptionMessage Exception while executing GetCaseStatuses
      */
     public function testGETInvalidCaseStatuses()
@@ -525,6 +564,35 @@ class TrustevClientTest extends TestCase
         $this->assertEquals($returnCaseCustomerAddress->City, $address->City);
     }
 
+    public function testPUTCustomerAddress()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $kase->Customer = new Entities\CustomerBase(array(
+                                        'FirstName' => "John",
+                                        'LastName' => "Doe"
+                                    ));
+        $kase->Customer->Addresses = array(new Entities\AddressBase(array(
+                                        'City' => "Cork City"
+                                    )));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        $address = new Entities\AddressBase(array(
+                                        'City' => "Clonakilty"
+                                    ));
+       
+        $returnCaseCustomerAddresses = ApiClient::UpdateCustomerAddress($returnCase->Id, $address, $returnCase->Customer->Addresses[0]->Id);
+        
+        $this->assertEquals($returnCaseCustomerAddresses->City, $address->City);
+    }
+
     public function testGETCustomerAddress()
     {
         
@@ -550,6 +618,32 @@ class TrustevClientTest extends TestCase
         $this->assertEquals($returnCaseCustomerAddress->City, $kase->Customer->Addresses[0]->City);
     }
 
+
+ /**
+     * @expectedException Trustev\Exceptions\TrustevGeneralException
+     * @expectedExceptionMessage Exception while executing GetCustomerAddress
+     */
+    public function testNULLGETCustomerAddress()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $kase->Customer = new Entities\CustomerBase(array(
+                                        'FirstName' => "John",
+                                        'LastName' => "Doe"
+                                    ));
+
+        
+
+        $returnCase = ApiClient::PostCase($kase);
+        $returnCaseCustomerAddress = ApiClient::GetCustomerAddress($returnCase->Id, $this->RandomGUID());
+                
+    }
 
     /**
      * @expectedException Trustev\Exceptions\TrustevGeneralException
@@ -693,6 +787,139 @@ class TrustevClientTest extends TestCase
         $this->assertEquals($kase->Customer->Emails[0]->EmailAddress, $returnEmail->EmailAddress);
         
     }
+
+    public function testGETCustomerEmails()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $kase->Customer = new Entities\CustomerBase(array(
+                                        'FirstName' => "John",
+                                        'LastName' => "Doe"
+                                    ));
+        $kase->Customer->Emails = array(new Entities\EmailBase(array(
+                                        'EmailAddress' => "John@doe.com"
+                                    )));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        $returnEmail = ApiClient::GetEmails($returnCase->Id, $returnCase->Customer->Emails[0]->Id);
+
+        
+        $this->assertEquals($kase->Customer->Emails[0]->EmailAddress, ((array) $returnEmail)[0]->EmailAddress);
+        
+    }
+#ENDREGION
+
+#REGION TRANSACTION TESTS
+
+
+    public function testPOSTTransaction()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        $transaction = new Entities\TransactionBase(array(
+                                        'TotalTransactionValue' => 20
+                                    ));
+
+        $transaction->Emails = array(new Entities\EmailBase(array(
+                                        'EmailAddress' => "John@doe.com"
+                                    )));
+
+        $returnTransaction = ApiClient::PostTransaction($returnCase->Id, $transaction);
+               
+        $this->assertEquals($transaction->TotalTransactionValue, $returnTransaction->TotalTransactionValue);
+        $this->assertEquals($transaction->Emails[0]->EmailAddress, $returnTransaction->Emails[0]->EmailAddress);
+    }
+
+    public function testPUTTransaction()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $kase->Transaction = new Entities\TransactionBase(array(
+                                        'TotalTransactionValue' => 20
+                                    ));
+
+        $kase->Transaction->Emails = array(new Entities\EmailBase(array(
+                                        'EmailAddress' => "John@doe.com"
+                                    )));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        $transaction = new Entities\TransactionBase(array(
+                                        'TotalTransactionValue' => 40
+                                    ));
+
+        $transaction->Emails = array(new Entities\EmailBase(array(
+                                        'EmailAddress' => "Jane@doe.com"
+                                    )));
+
+        $returnTransaction = ApiClient::UpdateTransaction($returnCase->Id, $transaction);
+               
+        $this->assertEquals($transaction->TotalTransactionValue, $returnTransaction->TotalTransactionValue);
+        $this->assertEquals($transaction->Emails[0]->EmailAddress, $returnTransaction->Emails[0]->EmailAddress);
+    }
+
+    public function testGETTransaction()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $kase->Transaction = new Entities\TransactionBase(array(
+                                        'TotalTransactionValue' => 20
+                                    ));
+
+        $kase->Transaction->Emails = array(new Entities\EmailBase(array(
+                                        'EmailAddress' => "John@doe.com"
+                                    )));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        $returnTransaction = ApiClient::GetTransaction($returnCase->Id);
+               
+        $this->assertEquals($kase->Transaction->TotalTransactionValue, $returnTransaction->TotalTransactionValue);
+        $this->assertEquals($kase->Transaction->Emails[0]->EmailAddress, $returnTransaction->Emails[0]->EmailAddress);
+    }
+
+
+    /**
+     * @expectedException Trustev\Exceptions\TrustevGeneralException
+     * @expectedExceptionMessage Exception while executing GetTransaction
+     */
+    public function testNULLGETTransaction()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+
+        $returnTransaction = ApiClient::GetTransaction($this->RandomGUID());
+    }
+
+
 #ENDREGION
 #REGION TRANSACTION ADDRESS TESTS
 
@@ -720,6 +947,36 @@ class TrustevClientTest extends TestCase
         $returnCaseTransactionAddress = ApiClient::PostTransactionAddress($returnCase->Id, $address);
         
         $this->assertEquals($returnCaseTransactionAddress->City, $address->City);
+    }
+
+
+    public function testPUTTransactionAddress()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $kase->Transaction = new Entities\TransactionBase(array(
+                                        'FirstName' => "John",
+                                        'LastName' => "Doe"
+                                    ));
+
+        $kase->Transaction->Addresses = array(new Entities\AddressBase(array(
+                                        'City' => "Cork City"
+                                    )));
+
+        $returnCase = ApiClient::PostCase($kase);
+
+        $address = new Entities\AddressBase(array(
+                                        'City' => "Clonakilty"
+                                    ));
+        $returnCaseTransactionAddress = ApiClient::UpdateTransactionAddress($returnCase->Id, $address, $returnCase->Transaction->Addresses[0]->Id);
+        
+        $this->assertEquals($address->City, $returnCaseTransactionAddress->City);
     }
 
     public function testGETTransactionAddress()
@@ -856,6 +1113,32 @@ class TrustevClientTest extends TestCase
         
         $this->assertNotEmpty($returnPayment->Id);
         $this->assertEquals($kase->Payments[0]->BINNumber, $returnPayment->BINNumber);
+        
+    }
+
+
+    public function testGETPayments()
+    {
+        
+        ApiClient::SetUp($this->userName, $this->password, $this->secret);
+
+        $kase = new Entities\CaseBase(array(
+                            'SessionId' => $this->RandomGUID(),
+                             'CaseNumber' => $this->RandomGUID()
+                             ));
+
+        $kase->Payments = array(new Entities\PaymentBase(array(
+                                        'PaymentType' => Entities\PaymentTypeEnum::CreditCard,
+                                        'BINNumber' => '123456'
+                                    )));
+
+        
+        $returnCase = ApiClient::PostCase($kase);
+
+        $returnPayment = ApiClient::GetPayments($returnCase->Id);
+        
+        
+        $this->assertEquals($kase->Payments[0]->BINNumber, ((array)$returnPayment)[0]->BINNumber);
         
     }
 
